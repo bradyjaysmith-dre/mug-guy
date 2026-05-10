@@ -117,17 +117,4 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
   },
-  {
-  id: 9,
-  name: "Vintage Emergency Light Bar",
-  era: "1980s",
-  type: "other",
-  price: 0,
-  img: "img/finds/lightbar.vintage-emergency.red.amber.jpg",
-  emoji: "🚨",
-  badge: "rare",
-  sold: false,
-  ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-  added: "2026-02-27",
-  },
 ];
