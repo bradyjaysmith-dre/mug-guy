@@ -34,7 +34,7 @@ const MUGS = [
     emoji: "☕",
     badge: "rare",
     sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
+    ebayUrl: "https://www.ebay.com/itm/397934709366",
     added: "2026-05-10",
     description: "Chunky stackable diner-style mug from WEMCO, a heavy equipment and industrial pump manufacturer. Bold blue logo on white glaze. A great piece of American industrial history — these corporate promo mugs rarely survive in clean condition.",
   },
