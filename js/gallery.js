@@ -1,12 +1,12 @@
 /**
  * gallery.js — renders mug cards, handles filtering and sorting
- * Depends on MUGS array from mugs.js
+ * Depends on MUGS array from mugs.js and MugGuyModal from modal.js
  */
 
 (function () {
-  const grid      = document.getElementById("mugGrid");
-  const countEl   = document.getElementById("galleryCount");
-  const sortSel   = document.getElementById("sortSelect");
+  const grid       = document.getElementById("mugGrid");
+  const countEl    = document.getElementById("galleryCount");
+  const sortSel    = document.getElementById("sortSelect");
   const filterBtns = document.querySelectorAll(".filter-chip");
 
   let activeFilter = "all";
@@ -14,8 +14,8 @@
   function getSorted(list) {
     const val = sortSel.value;
     const copy = [...list];
-    if (val === "low")  copy.sort((a, b) => a.price - b.price);
-    if (val === "high") copy.sort((a, b) => b.price - a.price);
+    if (val === "low")    copy.sort((a, b) => a.price - b.price);
+    if (val === "high")   copy.sort((a, b) => b.price - a.price);
     if (val === "newest") copy.sort((a, b) => new Date(b.added) - new Date(a.added));
     return copy;
   }
@@ -36,7 +36,7 @@
       : `<a href="${mug.ebayUrl}" target="_blank" rel="noopener" class="ebay-btn">↗ view on eBay</a>`;
 
     return `
-      <article class="mug-card">
+      <article class="mug-card" role="button" tabindex="0" data-mug-id="${mug.id}">
         <div class="mug-img">
           ${badge}
           ${imgContent}
@@ -51,6 +51,22 @@
         </div>
       </article>
     `;
+  }
+
+  function wireCards() {
+    grid.querySelectorAll(".mug-card").forEach((card) => {
+      const id   = Number(card.dataset.mugId);
+      const item = MUGS.find((m) => m.id === id);
+      if (!item) return;
+      const open = (e) => {
+        if (e.target.closest("a")) return; // let eBay link click through
+        window.MugGuyModal.open(item);
+      };
+      card.addEventListener("click", open);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); }
+      });
+    });
   }
 
   function render() {
@@ -68,6 +84,7 @@
         </div>`;
     } else {
       grid.innerHTML = list.map(buildCard).join("");
+      wireCards();
     }
 
     const n = list.length;

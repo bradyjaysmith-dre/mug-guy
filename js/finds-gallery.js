@@ -1,12 +1,12 @@
 /**
  * finds-gallery.js — renders finds cards, handles filtering and sorting
- * Depends on FINDS array from finds.js
+ * Depends on FINDS array from finds.js and MugGuyModal from modal.js
  */
 
 (function () {
-  const grid      = document.getElementById("findsGrid");
-  const countEl   = document.getElementById("galleryCount");
-  const sortSel   = document.getElementById("sortSelect");
+  const grid       = document.getElementById("findsGrid");
+  const countEl    = document.getElementById("galleryCount");
+  const sortSel    = document.getElementById("sortSelect");
   const filterBtns = document.querySelectorAll(".filter-chip");
 
   let activeFilter = "all";
@@ -36,7 +36,7 @@
       : `<a href="${item.ebayUrl}" target="_blank" rel="noopener" class="ebay-btn">↗ view on eBay</a>`;
 
     return `
-      <article class="mug-card">
+      <article class="mug-card" role="button" tabindex="0" data-find-id="${item.id}">
         <div class="mug-img">
           ${badge}
           ${imgContent}
@@ -51,6 +51,22 @@
         </div>
       </article>
     `;
+  }
+
+  function wireCards() {
+    grid.querySelectorAll(".mug-card").forEach((card) => {
+      const id   = Number(card.dataset.findId);
+      const item = FINDS.find((f) => f.id === id);
+      if (!item) return;
+      const open = (e) => {
+        if (e.target.closest("a")) return;
+        window.MugGuyModal.open(item);
+      };
+      card.addEventListener("click", open);
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); }
+      });
+    });
   }
 
   function render() {
@@ -68,6 +84,7 @@
         </div>`;
     } else {
       grid.innerHTML = list.map(buildCard).join("");
+      wireCards();
     }
 
     const n = list.length;
