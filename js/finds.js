@@ -105,4 +105,17 @@ const FINDS = [
     added: "2026-05-11",
     description: "10oz hand-painted martini glass from Lolita's The Martini Collection — Glamour-tini design. Adorned with high heels, lipstick, and fashion accessories in pink and white. Includes original recipe on the bottom. Comes in original round black gift box. Lightly used, in perfect condition — these collectible Lolita glasses are popular gift items and sell fast.",
   },
+  {
+    id: 10,
+    name: "Handmade Gold White Angel Christmas Ornaments Set of 2 with Gift Box",
+    era: "Vintage",
+    type: "other",
+    price: 10,
+    img: "",
+    emoji: "📦",
+    badge: "new",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/397936426626",
+    added: "2026-05-11",
+  },
 ];
