@@ -117,4 +117,18 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
   },
+  {
+    id: 9,
+    name: "Lolita Glamour-tini Hand-Painted Martini Glass",
+    era: "2000s",
+    type: "vessel",
+    price: 25,
+    img: "img/finds/vessel.lolita-glamour-tini-martini-glass.black.pink.jpg",
+    emoji: "🍸",
+    badge: "new",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
+    added: "2026-05-11",
+    description: "10oz hand-painted martini glass from Lolita's The Martini Collection — Glamour-tini design. Adorned with high heels, lipstick, and fashion accessories in pink and white. Includes original recipe on the bottom. Comes in original round black gift box. Lightly used, in perfect condition — these collectible Lolita glasses are popular gift items and sell fast.",
+  },
 ];
