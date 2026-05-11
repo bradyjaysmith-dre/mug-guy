@@ -3,181 +3,67 @@
  *
  * To add a new mug:
  *   1. Copy one of the objects below
- *   2. Give it a unique id
+ *   2. Give it a unique id (increment from last)
  *   3. Fill in your details
  *   4. Paste your eBay listing URL into ebayUrl
  *   5. Set sold: true once it sells
  *
  * Fields:
- *   id        — unique number, increment from last
- *   name      — listing title
- *   era       — decade or year (e.g. "1970s" or "1983")
- *   type      — one of: vintage | novelty | ceramic | holiday
- *   price     — number, in USD (matches your eBay BIN price)
- *   img       — path to photo in img/mugs/ (e.g. "img/mugs/lazy-sunday.jpg")
- *               leave as "" to show the emoji fallback
- *   emoji     — shown if img is missing
- *   badge     — "new" | "rare" | null
- *   sold      — true | false
- *   ebayUrl   — full URL to your eBay listing
- *   added     — ISO date string, used for "newest" sort
+ *   id          — unique number
+ *   name        — listing title
+ *   era         — decade or year (e.g. "1970s" or "1983")
+ *   type        — one of: vintage | novelty | ceramic | holiday
+ *   price       — number, in USD (matches your eBay BIN price)
+ *   img         — path to photo in img/mugs/
+ *   emoji       — shown if img is missing
+ *   badge       — "new" | "rare" | null
+ *   sold        — true | false
+ *   ebayUrl     — full URL to your eBay listing
+ *   added       — ISO date string, used for "newest" sort
+ *   description — short blurb for the listing (optional, for your reference)
  */
 
 const MUGS = [
   {
     id: 1,
-    name: "Lazy Sunday Diner Mug",
-    era: "1970s",
+    name: "WEMCO Industrial Logo Mug",
+    era: "1980s",
     type: "vintage",
     price: 18,
-    img: "",
+    img: "img/mugs/mug.wemco-logo.white.blue.jpg",
     emoji: "☕",
     badge: "rare",
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-01",
+    added: "2026-05-10",
+    description: "Chunky stackable diner-style mug from WEMCO, a heavy equipment and industrial pump manufacturer. Bold blue logo on white glaze. A great piece of American industrial history — these corporate promo mugs rarely survive in clean condition.",
   },
   {
     id: 2,
-    name: "I Hate Mondays Frog",
-    era: "1980s",
+    name: "1993 McDonald's Flintstones RocDonalds Glass Mug",
+    era: "1993",
     type: "novelty",
-    price: 24,
-    img: "",
-    emoji: "🐸",
-    badge: "new",
+    price: 14,
+    img: "img/mugs/mug.flintstones-mcdonalds.clear.clear.jpg",
+    emoji: "🦕",
+    badge: "rare",
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-05",
+    added: "2026-05-10",
+    description: "Vintage frosted glass mug from the 1993 McDonald's Flintstones movie promotion. Part of the iconic RocDonalds collector series made in France. Embossed Flintstones characters with bone-style handle. A legitimate 90s nostalgia piece sought after by fast food collectors.",
   },
   {
     id: 3,
-    name: "Hallmark Christmas Scene",
-    era: "1990s",
-    type: "holiday",
-    price: 14,
-    img: "",
-    emoji: "🎄",
-    badge: null,
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-04-28",
-  },
-  {
-    id: 4,
-    name: "Rocky Mountain Souvenir",
-    era: "1985",
-    type: "vintage",
-    price: 22,
-    img: "",
-    emoji: "🏔️",
-    badge: null,
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-04-20",
-  },
-  {
-    id: 5,
-    name: "\"World's Okayest\" Set",
-    era: "2000s",
-    type: "novelty",
-    price: 12,
-    img: "",
-    emoji: "😾",
-    badge: null,
-    sold: true,
-    ebayUrl: "",
-    added: "2026-04-10",
-  },
-  {
-    id: 6,
-    name: "Floral Stoneware Beauty",
-    era: "1960s",
+    name: "Dansk Tivoli Belles Fleurs Footed Cup",
+    era: "1981",
     type: "ceramic",
-    price: 32,
-    img: "",
+    price: 16,
+    img: "img/mugs/mug.dansk-tivoli-belles-fleurs.white.brown.jpg",
     emoji: "🌸",
     badge: "rare",
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-08",
-  },
-  {
-    id: 7,
-    name: "Wise Owl Pottery Mug",
-    era: "1975",
-    type: "ceramic",
-    price: 28,
-    img: "",
-    emoji: "🦉",
-    badge: "new",
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-09",
-  },
-  {
-    id: 8,
-    name: "Railroad Centennial Cup",
-    era: "1969",
-    type: "vintage",
-    price: 45,
-    img: "",
-    emoji: "🚂",
-    badge: "rare",
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-04-15",
-  },
-  {
-    id: 9,
-    name: "Pumpkin Patch Halloween",
-    era: "1988",
-    type: "holiday",
-    price: 16,
-    img: "",
-    emoji: "🎃",
-    badge: null,
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-04-22",
-  },
-  {
-    id: 10,
-    name: "Cow Print Diner Special",
-    era: "1990s",
-    type: "novelty",
-    price: 20,
-    img: "",
-    emoji: "🐄",
-    badge: "new",
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-07",
-  },
-  {
-    id: 11,
-    name: "Desert Southwest Studio",
-    era: "1980s",
-    type: "ceramic",
-    price: 36,
-    img: "",
-    emoji: "🌵",
-    badge: null,
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-04-30",
-  },
-  {
-    id: 12,
-    name: "State Fair Prize Mug",
-    era: "1976",
-    type: "vintage",
-    price: 38,
-    img: "",
-    emoji: "⭐",
-    badge: "rare",
-    sold: false,
-    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-    added: "2026-05-03",
+    added: "2026-05-10",
+    description: "Elegant footed cup in Dansk's discontinued Tivoli Belles Fleurs pattern (1981). Delicate peach tulip and brown floral motif on white porcelain with a gold rim. Made in Japan by Dansk International Designs Ltd. Discontinued in the 1980s — replacement pieces are actively sought by collectors.",
   },
 ];
