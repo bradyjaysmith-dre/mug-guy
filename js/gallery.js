@@ -1,6 +1,6 @@
 /**
- * gallery.js — renders mug cards, handles filtering and sorting
- * Depends on MUGS array from mugs.js and MugGuyModal from modal.js
+ * gallery.js — renders mug cards, handles filtering, sorting, image carousel
+ * Depends on MUGS array from mugs.js
  */
 
 (function () {
@@ -20,6 +20,30 @@
     return copy;
   }
 
+  function buildCarousel(mug) {
+    const imgs = mug.imgs && mug.imgs.length > 0 ? mug.imgs.filter(Boolean) : [];
+    if (imgs.length === 0) {
+      return `<span role="img" aria-label="${mug.name}" class="mug-emoji">${mug.emoji}</span>`;
+    }
+    if (imgs.length === 1) {
+      return `<img src="${imgs[0]}" alt="${mug.name}" loading="lazy" />`;
+    }
+    // Multiple images — build a carousel
+    const dots = imgs.map((_, i) =>
+      `<button class="carousel-dot ${i === 0 ? "active" : ""}" data-index="${i}" aria-label="Image ${i + 1}"></button>`
+    ).join("");
+    const slides = imgs.map((src, i) =>
+      `<img src="${src}" alt="${mug.name} view ${i + 1}" loading="lazy" class="carousel-slide ${i === 0 ? "active" : ""}" data-index="${i}" />`
+    ).join("");
+    return `
+      <div class="carousel">
+        ${slides}
+        <div class="carousel-dots">${dots}</div>
+        <button class="carousel-prev" aria-label="Previous">‹</button>
+        <button class="carousel-next" aria-label="Next">›</button>
+      </div>`;
+  }
+
   function buildCard(mug) {
     const badge = mug.sold
       ? '<span class="badge badge-sold">sold</span>'
@@ -27,19 +51,15 @@
         ? `<span class="badge badge-${mug.badge}">${mug.badge}</span>`
         : "";
 
-    const imgContent = mug.img
-      ? `<img src="${mug.img}" alt="${mug.name}" loading="lazy" /><span aria-hidden="true" style="opacity:0">${mug.emoji}</span>`
-      : `<span role="img" aria-label="${mug.name}">${mug.emoji}</span>`;
-
     const cta = mug.sold
       ? '<span class="ebay-btn sold">sold</span>'
       : `<a href="${mug.ebayUrl}" target="_blank" rel="noopener" class="ebay-btn">↗ view on eBay</a>`;
 
     return `
-      <article class="mug-card" role="button" tabindex="0" data-mug-id="${mug.id}">
+      <article class="mug-card" data-id="${mug.id}">
         <div class="mug-img">
           ${badge}
-          ${imgContent}
+          ${buildCarousel(mug)}
         </div>
         <div class="mug-info">
           <div class="mug-name">${mug.name}</div>
@@ -49,23 +69,28 @@
             ${cta}
           </div>
         </div>
-      </article>
-    `;
+      </article>`;
   }
 
-  function wireCards() {
-    grid.querySelectorAll(".mug-card").forEach((card) => {
-      const id   = Number(card.dataset.mugId);
-      const item = MUGS.find((m) => m.id === id);
-      if (!item) return;
-      const open = (e) => {
-        if (e.target.closest("a")) return; // let eBay link click through
-        window.MugGuyModal.open(item);
-      };
-      card.addEventListener("click", open);
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); }
-      });
+  function initCarousels() {
+    document.querySelectorAll(".carousel").forEach((carousel) => {
+      const slides = carousel.querySelectorAll(".carousel-slide");
+      const dots   = carousel.querySelectorAll(".carousel-dot");
+      const prev   = carousel.querySelector(".carousel-prev");
+      const next   = carousel.querySelector(".carousel-next");
+      let current  = 0;
+
+      function goTo(index) {
+        slides[current].classList.remove("active");
+        dots[current].classList.remove("active");
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add("active");
+        dots[current].classList.add("active");
+      }
+
+      prev.addEventListener("click", (e) => { e.preventDefault(); goTo(current - 1); });
+      next.addEventListener("click", (e) => { e.preventDefault(); goTo(current + 1); });
+      dots.forEach((dot) => dot.addEventListener("click", (e) => { e.preventDefault(); goTo(parseInt(dot.dataset.index)); }));
     });
   }
 
@@ -84,7 +109,7 @@
         </div>`;
     } else {
       grid.innerHTML = list.map(buildCard).join("");
-      wireCards();
+      initCarousels();
     }
 
     const n = list.length;
@@ -101,6 +126,5 @@
   });
 
   sortSel.addEventListener("change", render);
-
   render();
 })();
