@@ -131,7 +131,7 @@ const FINDS = [
     era: "Vintage",
     type: "holiday",
     price: 10,
-    imgs: ["img/finds/ebay-397936426626.jpg"],
+    imgs: ["img/finds/ornament.avon.crochet.two.angels.jpg"],
     emoji: "👼",
     badge: "new",
     sold: false,
