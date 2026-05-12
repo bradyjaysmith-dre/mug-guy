@@ -139,4 +139,17 @@ const FINDS = [
     added: "2026-02-27",
     description: "",
   },
+  {
+    id: 10,
+    name: "Red and Amber Mini Emergency Light Bar",
+    era: "Vintage",
+    type: "other",
+    price: 15,
+    imgs: ["img/finds/ebay-397938036556.jpg"],
+    emoji: "📦",
+    badge: "new",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/397938036556",
+    added: "2026-05-12",
+  },
 ];
