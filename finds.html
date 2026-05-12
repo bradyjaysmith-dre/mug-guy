@@ -64,8 +64,24 @@
     <div class="footer-ai">Site design, code, and copy generated with Claude AI (Anthropic). Product photos by the seller.</div>
   </footer>
 
+
+  <!-- Item detail modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-images" id="modalImages"></div>
+      <div class="modal-body">
+        <div id="modalBadge" class="modal-badge"></div>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-description" id="modalDescription"></div>
+        <a href="#" id="modalCta" class="modal-cta" target="_blank" rel="noopener">↗ View on eBay</a>
+      </div>
+    </div>
+  </div>
+
   <script src="js/finds.js"></script>
-  <script src="js/modal.js"></script>
   <script src="js/finds-gallery.js"></script>
 </body>
 </html>

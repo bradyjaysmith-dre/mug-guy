@@ -26,6 +26,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2025-12-31",
   },
+    description: "",
+  },,
   {
     id: 2,
     name: "Speckled Diner Plate",
@@ -39,6 +41,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2025-12-31",
   },
+    description: "",
+  },,
   {
     id: 3,
     name: "Tibetan Buddha Painting — Framed",
@@ -52,6 +56,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-07",
   },
+    description: "",
+  },,
   {
     id: 4,
     name: "Vintage Poetry Book Set w/ Bookends",
@@ -65,6 +71,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-07",
   },
+    description: "",
+  },,
   {
     id: 5,
     name: "Gruen Classic Dual-Dial Watch",
@@ -78,6 +86,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-08",
   },
+    description: "",
+  },,
   {
     id: 6,
     name: "Hand-Painted Floral Porcelain Plate",
@@ -91,6 +101,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
   },
+    description: "",
+  },,
   {
     id: 7,
     name: "Peanuts Snoopy & Woodstock Plate",
@@ -104,6 +116,8 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
   },
+    description: "",
+  },,
   {
     id: 8,
     name: "Tiosa by International Silver Vessel",
@@ -117,4 +131,6 @@ const FINDS = [
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
   },
+    description: "",
+  },,
 ];
