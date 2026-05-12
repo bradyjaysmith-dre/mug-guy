@@ -5,7 +5,7 @@
  *   1. Copy one of the objects below
  *   2. Give it a unique id
  *   3. Fill in your details
- *   4. Set imgs to paths in img/finds/
+ *   4. Set imgs to array of paths in img/finds/
  *   5. Paste your eBay listing URL into ebayUrl
  *   6. Set sold: true once it sells
  *
@@ -43,7 +43,6 @@ const FINDS = [
   },
   {
     id: 3,
-
     name: "Vintage Poetry Book Set w/ Bookends",
     era: "Early 1900s",
     type: "book",
@@ -64,7 +63,7 @@ const FINDS = [
     price: 55,
     imgs: ["img/finds/watch.gruen-classic-dual-dial.gold.black.jpg"],
     emoji: "⌚",
-    badge: "null",
+    badge: null,
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-08",
@@ -120,7 +119,7 @@ const FINDS = [
     price: 10,
     imgs: ["img/finds/ornament.avon.crochet.two.angels.jpg"],
     emoji: "👼",
-    badge: "null",
+    badge: "new",
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/397936426626",
     added: "2026-05-10",

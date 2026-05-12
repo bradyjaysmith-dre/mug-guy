@@ -14,13 +14,13 @@
  *   era         — decade or year (e.g. "1970s" or "1983")
  *   type        — one of: vintage | novelty | ceramic | holiday
  *   price       — number, in USD (matches your eBay BIN price)
- *   imgs         — path to photo in img/mugs/
- *   emoji       — shown if img is missing
+ *   imgs        — array of photo paths in img/mugs/
+ *   emoji       — shown if imgs is empty
  *   badge       — "new" | "rare" | null
  *   sold        — true | false
  *   ebayUrl     — full URL to your eBay listing
  *   added       — ISO date string, used for "newest" sort
- *   description — short blurb for the listing (optional, for your reference)
+ *   description — blurb shown in the item detail modal
  */
 
 const MUGS = [
