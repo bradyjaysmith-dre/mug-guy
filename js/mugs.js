@@ -14,7 +14,7 @@
  *   era         — decade or year (e.g. "1970s" or "1983")
  *   type        — one of: vintage | novelty | ceramic | holiday
  *   price       — number, in USD (matches your eBay BIN price)
- *   img         — path to photo in img/mugs/
+ *   imgs         — path to photo in img/mugs/
  *   emoji       — shown if img is missing
  *   badge       — "new" | "rare" | null
  *   sold        — true | false
