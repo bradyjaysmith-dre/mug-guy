@@ -5,7 +5,7 @@
  *   1. Copy one of the objects below
  *   2. Give it a unique id
  *   3. Fill in your details
- *   4. Set img to the path in img/finds/
+ *   4. Set imgs to paths in img/finds/
  *   5. Paste your eBay listing URL into ebayUrl
  *   6. Set sold: true once it sells
  *
@@ -25,9 +25,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2025-12-31",
-  },
     description: "",
-  },,
+  },
   {
     id: 2,
     name: "Speckled Diner Plate",
@@ -40,9 +39,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2025-12-31",
-  },
     description: "",
-  },,
+  },
   {
     id: 3,
     name: "Tibetan Buddha Painting — Framed",
@@ -55,9 +53,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-07",
-  },
     description: "",
-  },,
+  },
   {
     id: 4,
     name: "Vintage Poetry Book Set w/ Bookends",
@@ -70,9 +67,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-07",
-  },
     description: "",
-  },,
+  },
   {
     id: 5,
     name: "Gruen Classic Dual-Dial Watch",
@@ -85,9 +81,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-08",
-  },
     description: "",
-  },,
+  },
   {
     id: 6,
     name: "Hand-Painted Floral Porcelain Plate",
@@ -100,9 +95,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
-  },
     description: "",
-  },,
+  },
   {
     id: 7,
     name: "Peanuts Snoopy & Woodstock Plate",
@@ -115,9 +109,8 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
-  },
     description: "",
-  },,
+  },
   {
     id: 8,
     name: "Tiosa by International Silver Vessel",
@@ -130,7 +123,34 @@ const FINDS = [
     sold: false,
     ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
     added: "2026-02-09",
-  },
     description: "",
-  },,
+  },
+  {
+    id: 9,
+    name: "Handmade Angel Christmas Ornaments — Set of 2 with Gift Box",
+    era: "Vintage",
+    type: "holiday",
+    price: 10,
+    imgs: ["img/finds/ebay-397936426626.jpg"],
+    emoji: "👼",
+    badge: "new",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/397936426626",
+    added: "2026-05-10",
+    description: "",
+  },
+  {
+    id: 10,
+    name: "Vintage Emergency Light Bar",
+    era: "1980s",
+    type: "other",
+    price: 0,
+    imgs: ["img/finds/lightbar.vintage-emergency.red.amber.jpg"],
+    emoji: "🚨",
+    badge: "rare",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
+    added: "2026-02-27",
+    description: "",
+  },
 ];
