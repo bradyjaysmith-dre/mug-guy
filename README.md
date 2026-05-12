@@ -1,80 +1,135 @@
 # Mug Guy
 
-Curated vintage mug shop — static site, deploys to Vercel in minutes.
+Curated vintage mug and finds shop — static site, live at [mug-guy.vercel.app](https://mug-guy.vercel.app).
 
 ## Project structure
 
 ```
 mug-guy/
-├── index.html        ← gallery / shop page
-├── about.html        ← about page
+├── index.html          ← mugs gallery page
+├── finds.html          ← other finds gallery page
+├── about.html          ← about page
 ├── css/
-│   └── style.css     ← all styles
+│   └── style.css       ← all styles
 ├── js/
-│   ├── mugs.js       ← inventory data (edit this to add/update mugs)
-│   └── gallery.js    ← render + filter logic (don't need to touch this)
+│   ├── mugs.js         ← mug inventory data
+│   ├── gallery.js      ← mug render + filter + modal logic
+│   ├── finds.js        ← finds inventory data
+│   └── finds-gallery.js← finds render + filter + modal logic
 ├── img/
-│   └── mugs/         ← drop product photos here
+│   ├── mugs/           ← mug product photos
+│   └── finds/          ← finds product photos
+├── vercel.json         ← Vercel config
 └── README.md
 ```
 
-## Adding a mug
+## Managing inventory
+
+### Adding a mug manually
 
 Open `js/mugs.js` and add a new object to the `MUGS` array:
 
 ```js
 {
-  id: 13,                          // increment from last id
+  id: 4,                           // increment from last id
   name: "Your Mug Name",
   era: "1980s",                    // decade or year
   type: "vintage",                 // vintage | novelty | ceramic | holiday
   price: 22,                       // matches your eBay Buy It Now price
-  img: "img/mugs/your-photo.jpg",  // or "" to show emoji
-  emoji: "☕",                     // fallback if no photo
-  badge: "new",                    // "new" | "rare" | null
+  imgs: ["img/mugs/your-photo.jpg"],  // array — add more paths for multiple views
+  emoji: "☕",                     // shown if imgs is empty
+  badge: "new",                    // "new" | "rare" | null (no quotes for null)
   sold: false,
   ebayUrl: "https://www.ebay.com/itm/YOUR_LISTING_ID",
-  added: "2026-05-10",             // today's date
+  added: "2026-05-10",
+  description: "A short description shown in the item detail modal.",
 },
 ```
 
-## Marking a mug as sold
+### Adding a find manually
 
-Set `sold: true` in its object. The card will show a "sold" badge and disable the eBay button.
+Same structure in `js/finds.js`, using the `FINDS` array. Types available:
+`art | book | watch | plate | vessel | holiday | other`
 
-## Adding product photos
+### Adding via Montag Mugger (recommended)
 
-1. Take photos, rename them something clean (e.g. `lazy-sunday-diner.jpg`)
-2. Drop them in `img/mugs/`
-3. Set `img: "img/mugs/lazy-sunday-diner.jpg"` in the mug object
+Send a Telegram message to `mugguy_montag_bot`:
 
-**Recommended photo specs:** square crop, at least 800×800px, JPEG.
+| Command | What it does |
+|---|---|
+| `/mug <listingId>` | Fetch from eBay, add/update in mugs.js, push |
+| `/mug <listingId> -f` | Force full overwrite including images |
+| `/find <listingId>` | Fetch from eBay, add/update in finds.js, push |
+| `/find <listingId> -f` | Force full overwrite including images |
+| `/rmug <listingId>` | Remove from mugs.js |
+| `/rfind <listingId>` | Remove from finds.js |
+| `/sold <listingId>` | Mark as sold |
+| `/sync` | Manually trigger a full sync |
+| `/status` | Check bot health |
+
+The listing ID is the number at the end of the eBay URL:
+`https://www.ebay.com/itm/123456789012` → `123456789012`
+
+### Marking as sold
+
+Set `sold: true` in the item object. The card shows a "sold" badge and disables the eBay button. Montag handles this automatically during scheduled syncs.
+
+### Multiple photos per item
+
+Add more paths to the `imgs` array — the gallery card and detail modal will show a carousel:
+
+```js
+imgs: [
+  "img/mugs/mug.wemco-logo.white.blue.jpg",
+  "img/mugs/mug.wemco-logo.side.jpg",
+  "img/mugs/mug.wemco-logo.bottom.jpg",
+],
+```
+
+**Photo specs:** square crop, at least 800×800px, JPEG.
+**Naming convention:** `mug.<brand-description>.<color-main>.<color-secondary>.jpg`
+
+## Auto-sync (Montag Mugger)
+
+Montag Mugger runs on Pop!_OS and syncs the site with eBay automatically at **6am, 2pm, and 10pm MT**. Each sync:
+
+1. Fetches all active `bradysnano` eBay listings
+2. Updates changed prices, titles, and images
+3. Marks sold items as sold
+4. Commits and pushes if anything changed → Vercel redeploys
+
+Montag lives at: `/home/bradysmith/.openclaw/workspace/montag-mugger/`
+
+Start it: `cd /home/bradysmith/.openclaw/workspace/montag-mugger && npm start`
 
 ## Local development
 
-No build step needed. Just open `index.html` in your browser, or run a simple local server:
+No build step needed. Run a local server:
 
 ```bash
-# Python (usually already installed)
+cd /home/bradysmith/mug-guy
 python3 -m http.server 8080
-
 # Then open http://localhost:8080
 ```
 
-## Deploy to Vercel
+## Deploying changes
 
-1. Push this folder to a GitHub repo
-2. Go to [vercel.com](https://vercel.com) → "Add New Project"
-3. Import your GitHub repo
-4. Leave all settings as default (Vercel auto-detects static sites)
-5. Click Deploy — you're live in ~30 seconds
+```bash
+cd /home/bradysmith/mug-guy
+git add .
+git commit -m "your message"
+git push
+# Vercel auto-deploys in ~30 seconds
+```
 
-### Custom domain
+## eBay username
 
-In Vercel dashboard → your project → Settings → Domains → add `mugguy.com` (or whatever you grab).
+`bradysnano` — already set throughout the site.
 
-## Update your eBay store link
+## Tech stack
 
-Search for `YOUR_EBAY_USERNAME` in the project and replace with your actual eBay username. It appears in:
-- `index.html` (header + footer)
-- `about.html` (header + footer + CTA)
+- Static HTML/CSS/JS — no framework, no build step
+- Hosted on Vercel (free tier)
+- GitHub repo: `bradyjaysmith-dre/mug-guy`
+- Inventory managed via Montag Mugger (Node.js Telegram bot)
+- AI disclosure: site design, code, and copy generated with Claude AI (Anthropic)
