@@ -66,4 +66,18 @@ const MUGS = [
     added: "2026-05-10",
     description: "Elegant footed cup in Dansk's discontinued Tivoli Belles Fleurs pattern (1981). Delicate peach tulip and brown floral motif on white porcelain with a gold rim. Made in Japan by Dansk International Designs Ltd. Discontinued in the 1980s — replacement pieces are actively sought by collectors.",
   },
+  {
+    id: 4,
+    name: "Souvenir ARIZONA Cactus Ceramic Coffee Mug By Maack pre-owned",
+    era: "Vintage",
+    type: "novelty",
+    price: 3,
+    imgs: ["img/mugs/ebay-397972333565.jpg", "img/mugs/ebay-397972333565-1.jpg", "img/mugs/ebay-397972333565-2.jpg"],
+    emoji: "🎉",
+    badge: "new",
+    sold: false,
+    ebayUrl: "https://www.ebay.com/itm/397972333565",
+    added: "2026-05-22",
+    description: "This souvenir Arizona Cactus Ceramic Coffee Mug by Maack is a novelty coffee mug made of ceramic and porcelain materials. It features a colorful multicolor design with a unique Arizona cactus pattern, making it a perfect collectible for those who appreciate whimsical kitchen decor. This pre-owned mug set includes one coffee mug, making it a charming addition to any home's dinnerware collection.",
+  },
 ];
